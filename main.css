@@ -1,0 +1,171 @@
+:root {
+  --clr-light-pink: #f6b9d4;
+  --clr-dark-pink: #a62d6d;
+  --clr-neutral-red: #a42632;
+  --clr-menta-green: #72cecb;
+  --clr-soft-white: #f6f6fc;
+  --clr-menu-mute: #ceced1;
+  --clr-dark-choco: #221b19;
+  --ff-body: "Lato", sans-serif;
+  --ff-heading: "Montserrat", sans-serif;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-body);
+  background-color: var(--clr-soft-white);
+}
+
+header {
+  border-bottom: 1px var(--clr-dark-pink) solid;
+  box-shadow: 1px 1px 5px 7px rgba(0, 0, 0, 0.05);
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* BARRA DE NAV */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* LOGO */
+.logo {
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-family: var(--ff-heading);
+  color: var(--clr-dark-pink);
+  text-shadow: 2px 2px 3px var(--clr-light-pink);
+}
+
+/* BOTON MENU BURGUER */
+.menu {
+  color: var(--clr-dark-choco);
+  border: 1px var(--clr-dark-choco) solid;
+  border-radius: 50%;
+  padding: 5px 8px;
+  display: none;
+  cursor: pointer;
+}
+
+/* LISTA DE LA BARRA NAV */
+.nav-menu {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  text-transform: capitalize;
+  font-weight: var(--fw-bold);
+}
+
+.nav-link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px;
+  color: var(--clr-neutral-red);
+  transition: 0.1s ease-in;
+  cursor: pointer;
+}
+
+li:nth-of-type(4) {
+  display: none;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.search {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    margin: auto 1rem;
+  }
+
+  .nav-menu {
+    padding: 10px;
+    gap: 10px;
+    position: fixed;
+    left: -100%;
+    top: 2.5rem;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--clr-soft-white);
+    box-shadow: 1px 1px 5px 7px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-menu.active {
+    left: 0;
+    transition: 0.5s ease;
+  }
+
+  .menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-link:active {
+    color: var(--clr-light-pink);
+  }
+
+  .menu.active {
+    color: var(--clr-menu-mute);
+    border: rgba(0, 0, 0, 0.7);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
+    transition: 0.5s ease;
+  }
+
+  /* search wid */
+  .search,
+  li:nth-of-type(4) {
+    display: block;
+    position: relative;
+  }
+
+  .search-input {
+    background-color: #fff;
+    border: 0;
+    padding: 5px;
+    width: 20px;
+    height: 1.5rem;
+    transition: width 0.3s ease;
+  }
+
+  .btn-search {
+    background-color: var(--clr-soft-white);
+    color: var(--clr-menta-green);
+    border: 1px var(--clr-menta-green) solid;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 23px;
+    height: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .search.active .search-input {
+    width: 146px;
+  }
+
+  .search.active .btn-search {
+    transform: translateX(148px);
+  }
+}
